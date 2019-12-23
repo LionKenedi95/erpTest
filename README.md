@@ -1,24 +1,33 @@
 # erp-aero-test
 
+Основной компонент, являющийся объектом тестирования: src/components/Calculator.vue
+Проект собран на Vue CLI, который в свою очередь базируется на Webpack.
+
+Компонент имеет следующие props: 
+- calc: основная функция главной кнопки "Calc()" по умолчанию выполняющая сложение полученных переменных из инпутов,
+- validator: функция-валидатор, по умолчанию всегда возвращает true,
+- alertText: текст ошибки, если validator вернет false,
+- customCalcs: масиив объектов для генерации кастомных "кнопок". Пример использования приведен в App.vue.
+
+Все кнопки, в том числе основная, обернуты в слоты, чтобы можно было кастомизировать как их угодно. Например использовать элементы из BootstrapVue и т.п.
+
+Примечания:
+- нативная функция alert используется только для примера и естественно в боевом приложение вряд ли бы использовалась,
+- в валидаторе пропа customCalcs "захордкожена" проверка "length > 3" и это мне совсем не нравится, но так указано в ТЗ.
+
 ## Project setup
 ```
 npm install
 ```
-
 ### Compiles and hot-reloads for development
 ```
 npm run serve
 ```
-
 ### Compiles and minifies for production
 ```
 npm run build
 ```
-
 ### Lints and fixes files
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

@@ -1,33 +1,35 @@
 <template>
     <div id="app">
         <img title="Vue logo" src="./assets/logo.png">
-        <CustomForm
+        <Calculator
             :customCalcs="customCalcs"
         />
     </div>
 </template>
 
 <script>
-    import CustomForm from './components/CustomForm.vue'
+    import Calculator from './components/Calculator.vue'
 
     export default {
         name: 'app',
         components: {
-            CustomForm
+            Calculator
         },
         data() {
             return {
                 customCalcs: [{
                     id: 'division',
+                    show: true,
                     calc: (arg1, arg2) => arg1 / arg2,
                     validator: (arg1, arg2) => arg2 != 0,
                     text: 'Div()',
                     alertText: 'Нельзя делить на нуль!'
                 },{
                     id: 'multiplication',
+                    show: true,
                     calc: (arg1, arg2) => arg1 * arg2,
                     validator: (arg1, arg2) => {
-                        if (arg2 == 0) alert('Умножение на ноль всегда даст ноль!');
+                        if (arg2 == 0) alert('Умножение на нуль всегда даст нуль!');
                         return true;
                     },
                     text: 'Multi()',
@@ -39,7 +41,7 @@
 
 <style>
     #app {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
+        font-family: Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-align: center;

@@ -32,7 +32,7 @@
                 </button>
             </slot>
         </div>
-        <div>
+        <div id="output">
             {{ output }}
         </div>
     </div>
@@ -51,17 +51,21 @@
             },
             validator: {
                 type: Function,
-                default: (a,b) => a && b,
+                default: () => true,
             },
             customCalcs: {
                 type: Array,
                 default: () => [],
                 validator: (val) => {
-                    let check = true;
-                    val.map(item => {
-                        if (!typeof(item) === 'object' && !item.id && !item.calc) check = false;
-                    });
-                    return check;
+                    if (val.length > 3) return false;
+                    return val.reduce((memo, item) => {
+                        if (!typeof(item) === 'object'
+                            || !item.hasOwnProperty('id')
+                            || !item.hasOwnProperty('show')
+                            || !item.hasOwnProperty('calc')
+                            || !typeof(item.calc) === 'function') memo = false;
+                        return memo;
+                    }, true);
                 },
             },
         },
@@ -101,5 +105,15 @@
     }
     input:focus {
         border: none;
+    }
+    button {
+        background: none;
+        border: 1px solid grey;
+        padding: .2rem .6rem;
+        margin: .2rem;
+    }
+    #output {
+        margin-top: 2rem;
+        font-size: 1.2rem;
     }
 </style>

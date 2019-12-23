@@ -25,6 +25,7 @@
                 :name="`button-${item.id}`"
             >
                 <button
+                    v-show="item.show"
                     :key="item.id"
                     @click="_calc(preparedInput1, preparedInput2, item.calc, item.validator, item.alertText)"
                 >

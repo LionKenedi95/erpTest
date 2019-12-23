@@ -45,13 +45,13 @@
                 type: Function,
                 default: (a,b) => a + b,
             },
-            alertText: {
-                type: String,
-                default: 'Непредвиденная ошибка',
-            },
             validator: {
                 type: Function,
                 default: () => true,
+            },
+            alertText: {
+                type: String,
+                default: 'Непредвиденная ошибка',
             },
             customCalcs: {
                 type: Array,

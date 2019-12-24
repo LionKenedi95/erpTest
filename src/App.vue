@@ -21,7 +21,7 @@
                     id: 'division',
                     show: true,
                     calc: (arg1, arg2) => arg1 / arg2,
-                    validator: (arg1, arg2) => arg2 != 0,
+                    validator: (arg1, arg2) => arg1 != 0 && arg2 != 0,
                     text: 'Div()',
                     alertText: 'Нельзя делить на нуль!'
                 },{
